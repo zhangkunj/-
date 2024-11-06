@@ -1,0 +1,112 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.loginpop{
+    position: fixed;
+    display: flex;
+    
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    gap:30px;
+    top: 210px;
+    left: 450px;
+    width: 500px;
+    border-radius: 20px;
+    height: 400px;
+    background-color: white;
+    z-index: 2;
+
+}
+.Cancle {
+    width: 70%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.Cancle img{
+    width: 20px;
+    height: 20px;
+}
+.deng{
+    display: flex;
+    // background-color: red;
+    gap:5px;
+    align-items: center;
+    width: 70%;
+    height: 50px;
+}
+.deng div  {
+    width: 50%;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    gap:5px;
+    flex-direction: column;
+
+    align-items: start;
+}
+.deng  img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+.deng div span  {
+    font-size: 12px;
+    margin-right: 95px;
+    color: #1e1e1e;
+}
+.deng  button {
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    
+    color: white;
+    background-color: aquamarine;
+}
+.hs hr {
+    flex: 1;
+    border: 0;
+    height: 1px;
+    background: #7c7b7b;
+    margin: 0 10px;
+}
+.hs {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    width: 70%;
+    height: 30px;
+    align-items: center;
+    font-size: 12px;
+    color: #7c7b7b;
+}
+.ways{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    gap:50px;
+    height: 50px;
+    align-items: center;
+}
+.ways span img{
+    width: 20px;
+    height: 20px;
+
+}
+.ways>span{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: start;
+
+}
+.ch {
+    width: 70%;
+    height: 50px;
+
+}
