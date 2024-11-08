@@ -4,7 +4,7 @@ import qq from '.././../image/qq.png'
 import   we from '.././../image/weixin.png'
 import wei from '.././../image/weibo.png'
 import cancle from '.././../image/cancle.png'
-import { Divider } from 'antd-mobile'
+
 import { useState } from 'react'
 const LoginPop = ({Dcancle,isHidden ,Isdisstate}) => {
     const DisState=()=>{
