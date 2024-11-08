@@ -1,0 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+.all{
+    position: relative;
+    width: 100%;
+    height: 1200px;
+    background-color: rgb(255, 255, 255);
+
+}
+.buju{
+    top:90px;
+    position: absolute;
+    display: flex;
+    background-color: burlywood;
+    width: 100%;
+    height: 700px;
+    justify-content: start;
+
+}
+.red{
+    display: flex;
+    background-color: red;
+    flex:7;
+    height: 700px;
+}
+.bule{
+    flex: 3;
+    background-color: blue;
+}
+.green{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+    background-color: green;
+    flex:7;
+    
+}
+.yellow{
+    background-color: yellow;
+    flex:2;
+}
+.puple{
+    background-color: purple;
+    flex: 6;
+}
+.black{
+    background-color: black;
+    flex:2;
+}
+.pink{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    
+    background-color: pink;
+    flex:3;
+    height: 700px;
+}
+.while{
+    flex: 5;
+    background-color: aquamarine;
+}
+.white{
+    flex: 5;
+    background-color: aliceblue;
+}

@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+.all{
+    position: relative;
+    width: 100%;
+    height: 1200px;
+    background-color: rgb(255, 255, 255);
+
+}
+.his{
+    top:90px;
+    position: absolute;
+    display: flex;
+    background-color: burlywood;
+    width: 100%;
+    height: 700px;
+    justify-content: start;
+
+}
+.historyL{
+    flex: 4;
+}
+.historyR{
+    flex:6
+}

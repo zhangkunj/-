@@ -7,6 +7,9 @@ import Documentaries from "../page/Documentaries"
 import  Movie  from "../page/Movie"
 import Variety from "../page/Variety"
 import App from "../App"
+import Asearch from "../page/Asearch"
+
+import Hearders from "../Element/header"
 import { useSelector,useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { useState } from "react"
@@ -40,6 +43,11 @@ const router =createBrowserRouter([
              {
                 path:"/variety", 
                 element:<Variety/>
+             },
+             {
+               path:"/asearch/:name", 
+               element:<Asearch/>
+
              }
         ]
     },

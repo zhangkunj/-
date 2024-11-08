@@ -1,32 +1,27 @@
-import { Divider } from "antd-mobile"
-import logo from "../../image/logo.png"
-import vip from "../../image/VIP.avif"
-import vip6 from "../../image/vip.png"
-import load from "../../image/load.avif"
+
 import './login.scss'
-import touxiang from "../../image/touxiang.jpeg"
+
 import  yao from "../../image/yao.png"
 import fen from "../../image/fe.png"
 import sing from "../../image/sing.png"
 import water from "../../image/water.png"
 import dang from  "../../image/dian.png"
-
 import { fetchLike ,fetchViewList,fetchFoodList,fetchGameList} from "../../store/modules/takeaway"
-import ru from"../../image/ru.png"
+
 import { useSelector,useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { useState } from "react"
+import { useState,useRef  } from "react"
+import _ from "lodash"
+import Hearders from "../../Element/header"
 import {Link,Outlet} from "react-router-dom"
-import Article from "../drama"
-import LoginPop from "../../pop/LoginPop/LoginPop"
+
 
 const Login=()=>{
-       const [ loginPopSate,setLoginPopState ]=useState(true)
-       const [name,setname]=useState("")
-       const [isdisState,setisdisState]=useState(false)
+    
     const [getname,setgetname] =useState("电视剧")
     const [background,setbackground]=useState("transparent")
     const [foodFilter, setFoodFilter] =useState([])
+    const listRef = useRef(null);
     const handlescroll=()=>{
         const scrollpostion=window.scrollY
         if(scrollpostion>600){
@@ -41,41 +36,27 @@ const Login=()=>{
             window.removeEventListener("scroll",handlescroll)
         }
     },[])
-    const Isdisstate=(Disstate,getname)=>{
-        setisdisState(Disstate)
-        setname(getname)
-        setLoginPopState(true)
-        console.log(isdisState)
-        console.log(getname)
 
-    }
   
     const handlechange=(e)=>{
         setgetname(e.target.innerHTML)
         console.log(getname);
     }
-    const LoginPopopen=()=>{
-        setLoginPopState(false)
-        console.log(loginPopSate);
-    }
-    const LoginPopclose = () => {
-        setLoginPopState(true);
-      };
-    
-
     const {like,foodList,game} = useSelector(state=>state.foods)
-    const foodname=Array.from(new Set(foodList.map(item=>item.name)))
+  
     
     const likedispatch=useDispatch()
     const fooddispatch=useDispatch()
     const gameDispatch=useDispatch()
+    
     useEffect(()=>{
       setFoodFilter(foodList.filter(item=>item.name===getname))
+   
     },[getname,foodList])
     useEffect(()=>{
         gameDispatch(fetchGameList())
       },[gameDispatch])
-      console.log(JSON.stringify(game))
+    //   console.log(JSON.stringify(game))
    
     useEffect(()=>{
       likedispatch(fetchLike())
@@ -83,153 +64,10 @@ const Login=()=>{
     useEffect(()=>{
         fooddispatch(fetchFoodList())
       },[fooddispatch])
-    console.log(JSON.stringify(foodname));
+    // console.log(JSON.stringify(foodname));
     return (
         <div className="login">
-            <div className="headers" style={{background}}>
-                <div className="logo">
-                    <div className="ba"></div>
-                    <img src={logo} alt="" />
-                    <h4>腾讯视频</h4>
-                </div>
-                <div className="search">
-                    <input type="text"  placeholder="知否知否，应是绿肥红瘦"/>
-                </div>
-                <div className="right">
-                    <div className="righttop">
-                        <ul>
-                            <li class="Bold"></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            
-                        </ul>
-                    </div>
-                    
-                    <div className="rightdown">
-                        <div className='sheji'>
-                            <div className="Bold s">会员专区</div>
-                            <div className="Rightbottom">
-                                <h4 className="Bold">扫码优惠续会员</h4>
-                                <img src={vip} alt="" />
-                                <div className="md">
-                                <div className="i">
-                                        <ul >
-                                            <li>
-                                            <img src={load} alt="" />
-                                            </li>
-                                            <li><img src={load} alt="" /></li>
-                                            <li><img src={load} alt="" /></li>
-                                            <li><img src={load} alt="" /></li>
-                                        </ul>
-                                </div>
-                                <div className="f">
-                                        <ul >
-                                            <li>缓存特权</li>
-                                            <li>1080p</li>
-                                            <li>内容抢先看</li>
-                                            <li>视听</li>
-                                            
-                                        </ul>
-                                </div>
-                                </div>
-                                <div className="butt">
-                                    <button>再续前缘</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div className='sheji'>
-                            <div className=" s">游戏</div>
-                            <div className="Rightbottom5">
-                                {game.map(item=>
-                                    <div>                                            
-                                         <img src={item.image} alt="" />
-                                        <span>{item.name}</span>
-                                        <span>{item.rating}</span>
-                                        <span>{item.content}</span>
-                                    </div>
-                                     
-                                )}
-
-                            </div>
-                        </div>
-                        <div className='sheji'>
-                            <div className=" s">快捷询问</div>
-                            <div className="Rightbottom1"></div>
-                        </div>
-                        <div className='sheji'>
-                            <div className=" s">历史</div>
-                            <div className="Rightbottom2"></div>
-                        </div>
-                        <div className='sheji'>
-                            <div className=" s">创作</div>
-                            <div className="Rightbottom3"></div>
-                        </div>
-                        <div className='sheji'>
-                            <div className=" s">客户端</div>
-                            <div className="Rightbottom4">
-                                <div >
-                                <img src={logo} alt="" />
-                                <span>腾讯视频windows客户端</span>
-                                <span>视频极速下载  本地视频播放 桌面便利访问</span>
-                                < button>立即体验</button>
-                                <span>查看更多</span>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className='sheji'>
-                            {!isdisState && <div className=" s" onClick={LoginPopopen}>登录</div>}
-                            {isdisState && <div className=" Loginall" >
-                                <div className=" Loginlogo">
-                                    <img src={touxiang} alt="" className="touxiang" />
-                                    <img src={vip6} style={{width:"20px",height:"10px"}} alt="" />  
-                                </div>
-                                <div className="Rightbottom6">
-                                   <div className="right6">
-                                    <div className="R6top">
-                                        <div className="r6top1">
-                                            <span>{name}</span>
-                                            <img src={vip6} alt="" />
-                                        </div>
-                                                <em> vip还有3天到期</em>
-                                        <button>
-                                                <img src={vip6} alt="" />
-                                                <span>续费腾讯视频VIP</span>
-
-                                        </button>
-                                        <div className="r6bu">
-                                                <img src={vip6} alt="" />
-                                                <span>开通电视特权</span>
-                                                <img src={vip6} alt="" />
-                                        </div>
-                                            
-                                        </div>
-                                        <div className="R6bottom">
-                                            <ul>
-                                                    <li><span></span><h4>个人中心</h4></li>
-                                                    <li><span></span><h4>我的追加</h4></li>
-                                                    <li><span></span><h4>我的游戏包</h4></li>
-                                                    <li><span></span><h4>VIP消息</h4></li>
-                                            </ul>
-                                        
-                                            <button>退出</button>
-                                    </div>
-                                   </div>
-
-                                </div>
-                               </div>}
-                                
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-                {/* <div className="Rightbottom"></div> */}
-            </div>
+            <Hearders/>
             <div className="navs">
                 <div className="navLeft">
                     <ul>
@@ -299,10 +137,7 @@ const Login=()=>{
                 </div>
 
                 
-            </div>
-            
-                <LoginPop Dcancle={LoginPopclose} isHidden={loginPopSate} Isdisstate={Isdisstate} />
-            
+            </div> 
              <Outlet/>
            
             
